@@ -1,0 +1,21 @@
+#!/usr/bin/python3
+
+import subprocess
+import sys
+
+if len(sys.argv) < 3:
+    print("Usage: checksamedir directory1 directory2", file=sys.stderr)
+    sys.exit(1)
+
+path1 = sys.argv[1]
+path2 = sys.argv[2]
+
+dirs1 = subprocess.getoutput('ls ' + path1).split('\n')
+dirs2 = subprocess.getoutput('ls ' + path2).split('\n')
+
+for f1 in dirs1:
+    for f2 in dirs2:
+        if f1 == f2:
+            print(f1)
+
+
